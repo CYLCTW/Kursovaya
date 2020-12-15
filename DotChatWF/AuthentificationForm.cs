@@ -38,7 +38,7 @@ namespace DotChatWF
             string name = textBox1.Text;
             string password = textBox2.Text;
                 string text;
-                string file = @"C:\Users\User\source\repos\Rursovaya\Server\data_sessions.json";
+                string file = @"C:\Users\User\Documents\GitHub\Kursovaya\Server\data_sessions.json";
                 int k = 0;
                 using(StreamReader sr = new StreamReader(file))
                 {
