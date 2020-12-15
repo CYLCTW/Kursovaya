@@ -134,7 +134,7 @@ namespace DotChat
             // Создание цикла получения сообщений
             int lastMsgID = 1;
             Timer updateLoop = new Timer();
-            string I = File.ReadLines("P.json").Skip(4).First();
+            string I = File.ReadLines("Timelapse.json").Skip(4).First();
             int Mama = Convert.ToInt32(I);
             updateLoop.Interval = Mama;
             updateLoop.Elapsed += (object sender, ElapsedEventArgs e) => {
