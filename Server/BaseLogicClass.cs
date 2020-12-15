@@ -35,8 +35,8 @@ namespace Server
 
     public void Add(message ms)
     {
-            File.AppendAllText("TTT.txt", ms.username.ToString() + ": ");
-            File.AppendAllText("TTT.txt", ms.text.ToString() + "\n");
+            File.AppendAllText("FromServerWithlove.txt", ms.username.ToString() + ": ");
+            File.AppendAllText("FromServerWithlove.txt", ms.text.ToString() + "\n");
             ms.timestamp = DateTime.UtcNow;
       messages.Add(ms);
     }
