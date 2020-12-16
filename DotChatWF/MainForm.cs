@@ -37,8 +37,8 @@ namespace DotChatWF
             
             Message msg = GetMessage(lastMsgID);
             if (msg != null) {
-                listMessages.Items.Add($"[{msg.username}] : {msg.text}");//Нужно просто вывести через фор листмессажес в нужном окне
-                                                                       //Тут нужно добавить функцию, которая выводит сообщение в консоль
+                MessengerWindow.Items.Add($"[{DateTime.Now.ToShortTimeString()}] [{msg.username}]: {msg.text}");//Нужно просто вывести через фор листмессажес в нужном окне
+                                                                                                             //Тут нужно добавить функцию, которая выводит сообщение в консоль
                 lastMsgID++;
             }
             
@@ -63,7 +63,7 @@ namespace DotChatWF
 
                     });
                 }
-                ListBox_listMessages = listMessages;
+                ListBox_listMessages = MessengerWindow;
 
                 updateLoop_Tick(sender, e);
 

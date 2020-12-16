@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.listMessages = new System.Windows.Forms.ListBox();
+            this.MessengerWindow = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.fieldUsername = new System.Windows.Forms.TextBox();
@@ -40,23 +40,27 @@
             this.btnReg = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // listMessages
+            // MessengerWindow
             // 
-            this.listMessages.FormattingEnabled = true;
-            this.listMessages.ItemHeight = 16;
-            this.listMessages.Location = new System.Drawing.Point(16, 2);
-            this.listMessages.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.listMessages.Name = "listMessages";
-            this.listMessages.Size = new System.Drawing.Size(776, 340);
-            this.listMessages.TabIndex = 0;
-            this.listMessages.SelectedIndexChanged += new System.EventHandler(this.listMessages_SelectedIndexChanged);
+            this.MessengerWindow.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MessengerWindow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.MessengerWindow.FormattingEnabled = true;
+            this.MessengerWindow.ItemHeight = 19;
+            this.MessengerWindow.Location = new System.Drawing.Point(16, 2);
+            this.MessengerWindow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MessengerWindow.Name = "MessengerWindow";
+            this.MessengerWindow.Size = new System.Drawing.Size(776, 327);
+            this.MessengerWindow.TabIndex = 0;
+            this.MessengerWindow.SelectedIndexChanged += new System.EventHandler(this.listMessages_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.Color.ForestGreen;
             this.label1.Location = new System.Drawing.Point(12, 377);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 17);
+            this.label1.Size = new System.Drawing.Size(81, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "Username";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -64,9 +68,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.ForeColor = System.Drawing.Color.ForestGreen;
             this.label2.Location = new System.Drawing.Point(12, 411);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 17);
+            this.label2.Size = new System.Drawing.Size(72, 17);
             this.label2.TabIndex = 2;
             this.label2.Text = "Message";
             // 
@@ -75,6 +81,8 @@
             this.fieldUsername.AutoCompleteCustomSource.AddRange(new string[] {
             "You are not logged in"});
             this.fieldUsername.BackColor = System.Drawing.SystemColors.Control;
+            this.fieldUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.fieldUsername.ForeColor = System.Drawing.Color.Red;
             this.fieldUsername.Location = new System.Drawing.Point(108, 374);
             this.fieldUsername.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.fieldUsername.Name = "fieldUsername";
@@ -96,6 +104,8 @@
             // 
             // btnSend
             // 
+            this.btnSend.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnSend.ForeColor = System.Drawing.Color.DarkGreen;
             this.btnSend.Location = new System.Drawing.Point(644, 374);
             this.btnSend.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSend.Name = "btnSend";
@@ -113,6 +123,7 @@
             // 
             // btnAuth
             // 
+            this.btnAuth.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnAuth.Location = new System.Drawing.Point(12, 455);
             this.btnAuth.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAuth.Name = "btnAuth";
@@ -124,6 +135,7 @@
             // 
             // btnReg
             // 
+            this.btnReg.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnReg.Location = new System.Drawing.Point(175, 455);
             this.btnReg.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnReg.Name = "btnReg";
@@ -145,11 +157,11 @@
             this.Controls.Add(this.fieldUsername);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listMessages);
+            this.Controls.Add(this.MessengerWindow);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = "Messenger";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -158,7 +170,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox listMessages;
+        private System.Windows.Forms.ListBox MessengerWindow;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox fieldUsername;
