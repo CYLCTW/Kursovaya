@@ -30,6 +30,7 @@ namespace DotChatWF
         public MainForm()
         {
             InitializeComponent();
+         
         }
         
         private void updateLoop_Tick(object sender, EventArgs e)
@@ -114,6 +115,11 @@ namespace DotChatWF
 
     private void MainForm_Load(object sender, EventArgs e)
     {
+            Message Here=new Message();                 //
+            Here.username = "";                         //
+            Here.text = "Unknown username entered chat";//1111111111111
+            Here.list = "";                             //
+            SendMessage(Here);
         string Height1 = File.ReadLines("WindowSize.Json").Skip(4).First();//Height
         string Width1 = File.ReadLines("WindowSize.Json").Skip(7).First();
         int W = Convert.ToInt32(Width1);
@@ -155,6 +161,23 @@ namespace DotChatWF
 
         private void label1_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void MainForm_Closed(object sender, FormClosedEventArgs e)
+        {
+            Message Here = new Message();                 //
+            Here.username = "";
+            if (int_token == 0)
+            {
+                Here.text = "Unknown username exited chat";//1111111111111
+            }
+            else
+            {
+                Here.username = fieldUsername.Text + " exited chat";
+            }
+            Here.list = "";                             //
+            SendMessage(Here);
 
         }
     }

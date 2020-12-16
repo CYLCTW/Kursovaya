@@ -31,3 +31,30 @@ k: 1
 k: 1
 k: 1
 k: 1
+: Unknown username entered chat
+: Unknown username entered chat
+: Unknown username entered chat
+: Unknown username entered chat
+k: 1
+k: 11
+: Unknown username entered chat
+: Unknown username entered chat
+: Unknown username exited chat
+: Unknown username entered chat
+: Unknown username entered chat
+: Unknown username entered chat
+k: 1
+k: 11
+fieldUsername: 
+: Unknown username entered chat
+: Unknown username exited chat
+: Unknown username entered chat
+k exited chat: 
+: Unknown username entered chat
+Al-Turar: 1
+Al-Turar exited chat: 
+: Unknown username entered chat
+: Unknown username entered chat
+k: 1
+k exited chat: 
+: Unknown username entered chat
