@@ -33,7 +33,7 @@ namespace Server.Controllers
 
         // POST api/<chatController>
         [HttpPost]
-        public void Post([FromBody] message msg)
+        public void Post([FromBody] message msg)//Считывает с сервера необходимую информацию и кидает её в консоль сервера
         {
             Program.ms.Add(msg);
             Console.WriteLine($"{msg.username}:  {msg.text} ({Program.ms.messages.Count})");

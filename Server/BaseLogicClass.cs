@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Server
 {
-  [Serializable]
+  [Serializable]//Everything turns into bits!!!(if you need)
   public class message
   {
     public string username { get; set; }
@@ -35,10 +35,10 @@ namespace Server
 
     public void Add(message ms)
     {
-            File.AppendAllText("FromServerWithlove.txt", ms.username.ToString() + ": ");
-            File.AppendAllText("FromServerWithlove.txt", ms.text.ToString() + "\n");
+            File.AppendAllText("FromServerWithlove.txt", ms.username.ToString() + ": ");//With the use of this function you can send it's second attribute 
+            File.AppendAllText("FromServerWithlove.txt", ms.text.ToString() + "\n");//               to file with the name in the first attribute
             ms.timestamp = DateTime.UtcNow;
-      messages.Add(ms);
+            messages.Add(ms);
     }
 
     public void Add(string username, string text)
@@ -124,9 +124,7 @@ namespace Server
           login_exist = true;
           if (item.password == password)
           {
-            int token = GenToken();
-            tokens record_token = new tokens(token, login, password);
-            list_tokens[row_num].token = token;
+            int token = item.token;
             //list_tokens.Add(record_token);
             Console.WriteLine($"Аутификация успешно login: {login} password: {password} token: {token}");
             return token;

@@ -45,14 +45,28 @@ namespace DotChatWF
                     text = sr.ReadToEnd();
                 }
                 var m = JsonExtensions.ToObject<Temperatures>(text);
-                WebRequest req = WebRequest.Create("http://localhost:/api/auth");
                 for(int i=0; i!= m.ListTokens.Count(); i++)
                 {
                     if(name==m.ListTokens[i].Login)
                     {
                         if(password == m.ListTokens[i].Password)
                         {
-                            k = 1;
+                        WebRequest req = WebRequest.Create("http://localhost:5000/api/auth");
+                        req.Method = "POST";
+                        AuthData auth_data = new AuthData();
+                        auth_data.login = name;
+                        auth_data.password = password;
+                        string postData = JsonConvert.SerializeObject(auth_data);
+                        req.ContentType = "application/json";
+                        StreamWriter reqStream = new StreamWriter(req.GetRequestStream());
+                        reqStream.Write(postData);
+                        reqStream.Close();
+                        HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
+                        StreamReader sr = new StreamReader(resp.GetResponseStream(), Encoding.GetEncoding("utf-8"));
+                        string content = sr.ReadToEnd();
+                        sr.Close();
+                        int int_token = Convert.ToInt32(content, 10);
+                        k = 1;
                             MForm.TextBox_username.Text = name;
                             MForm.Show();
                             this.Visible = false;

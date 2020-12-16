@@ -114,8 +114,8 @@ namespace DotChatWF
 
     private void MainForm_Load(object sender, EventArgs e)
     {
-        string Height1 = File.ReadLines("Config.Json").Skip(4).First();
-        string Width1 = File.ReadLines("Config.Json").Skip(7).First();
+        string Height1 = File.ReadLines("WindowSize.Json").Skip(4).First();//Height
+        string Width1 = File.ReadLines("WindowSize.Json").Skip(7).First();
         int W = Convert.ToInt32(Width1);
         int H = Convert.ToInt32(Height1);
         this.Size = new Size(W, H);
