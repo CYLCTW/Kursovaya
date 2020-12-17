@@ -67,11 +67,14 @@ namespace DotChatWF
                         sr.Close();
                         int int_token = Convert.ToInt32(content, 10);
                         k = 1;
-                            MForm.TextBox_username.Text = name;
-                            MForm.Show();
-                            this.Visible = false;
-                            MForm.int_token = -1;
-                        }
+                        MForm.TextBox_username.Text = name;
+                        MForm.Show();
+                        this.Visible = false;
+                        MForm.int_token = -1;
+                        MForm.CheckStatusOnline();
+                        //
+
+                    }
                         else 
                         {
                             k = 1;

@@ -108,18 +108,18 @@ namespace DotChatWF
     {
            
             AuthForm.MForm = this;
-        
-        AuthForm.Show();
+            CheckStatusOffline();
+            AuthForm.Show();
         this.Visible = false;
     }
 
     private void MainForm_Load(object sender, EventArgs e)
     {
-            Message Here=new Message();                 //
-            Here.username = "";                         //
-            Here.text = "Unknown username entered chat";//1111111111111
-            Here.list = "";                             //
-            SendMessage(Here);
+            //Message Here=new Message();                 //
+           // Here.username = "";                         //
+            //Here.text = "Unknown username entered chat";//1111111111111
+           // Here.list = "";                             //
+           // SendMessage(Here);
         string Height1 = File.ReadLines("WindowSize.Json").Skip(4).First();//Height
         string Width1 = File.ReadLines("WindowSize.Json").Skip(7).First();
         int W = Convert.ToInt32(Width1);
@@ -138,6 +138,7 @@ namespace DotChatWF
         private void btnReg_Click(object sender, EventArgs e)
         {
             RegForm.mForm = this;
+            CheckStatusOffline();
             RegForm.Show();
             this.Visible = false;
         }
@@ -166,19 +167,35 @@ namespace DotChatWF
 
         private void MainForm_Closed(object sender, FormClosedEventArgs e)
         {
-            Message Here = new Message();                 //
-            Here.username = "";
-            if (int_token == 0)
-            {
-                Here.text = "Unknown username exited chat";//1111111111111
-            }
-            else
-            {
-                Here.username = fieldUsername.Text + " exited chat";
-            }
-            Here.list = "";                             //
-            SendMessage(Here);
 
+            CheckStatusOffline();
+
+        }
+        public void CheckStatusOffline()
+        {
+            if (int_token != 0)
+            {
+                Message Here = new Message();                 //
+                Here.username = "Server";
+                Here.text = fieldUsername.Text + " is OFFLINE";
+                Here.list = "";                             //
+                SendMessage(Here);//1111111111111
+            }
+        }
+        public void CheckStatusOnline()
+        {
+            Message authok = new Message();
+            authok.username = "Server";
+            authok.text = fieldUsername.Text + " is ONLINE";
+            WebRequest reqt = WebRequest.Create("http://localhost:5000/api/chat");      //
+            reqt.Method = "POST";                                                       //
+            string postdata = JsonConvert.SerializeObject(authok);                                   //
+            reqt.ContentType = "application/json";                                      //
+                                                                                        //////req.ContentLength = bytes.Length;                                     //
+            StreamWriter reqtStream = new StreamWriter(reqt.GetRequestStream());        //
+            reqtStream.Write(postdata);                                                 //
+            reqtStream.Close();                                                         //
+            reqt.GetResponse();
         }
     }
     [Serializable]

@@ -58,3 +58,67 @@ Al-Turar exited chat:
 k: 1
 k exited chat: 
 : Unknown username entered chat
+: Unknown username entered chat
+: Unknown username entered chat
+: Unknown username entered chat
+: Unknown username entered chat
+: Unknown username entered chat
+k exited chat: 
+: Unknown username entered chat
+k exited chat: 
+: Unknown username entered chat
+k exited chat: 
+: Unknown username entered chat
+: Unknown username entered chat
+: Unknown username entered chat
+: Unknown username entered chat
+: Unknown username entered chat
+: Unknown username entered chat
+: Unknown username entered chat
+: Unknown username entered chat
+: Unknown username entered chat
+: Unknown username entered chat
+k exited chat: 
+k:        entered chat
+k exited chat: 
+: k       entered chat
+k exited chat: 
+Server: k entered chat
+k exited chat: 
+Server: k entered chat
+Server: k exited chat
+Server: 3 entered chat
+3: Hello
+Server: 3 entered chat
+Server: k entered chat
+k: hello
+
+Server: k entered chat
+Server: k exited chat
+Server: k entered chat
+Server: k entered chat
+Server: k exited chat
+Server: k entered chat
+Server: k exited chat
+Server: k entered chat
+Server: Al-Turar entered chat
+Al-Turar: Hello
+Server: Al-Turar exited chat
+Server: k entered chat
+Server: Pain entered chat
+Server: Pain exited chat
+Server: k entered chat
+Server: k exited chat
+Server: t entered chat
+t: Hello
+t: Hello
+t: Hello
+t: Hello
+t: Hello
+t: Hello
+Server: 3 is ONLINE
+Server: 3 is OFFLINE
+Server: k is ONLINE
+Server: k is OFFLINE
+Server: 4 is ONLINE
+Server: 4 is OFFLINE
