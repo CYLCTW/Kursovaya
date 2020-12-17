@@ -38,6 +38,7 @@
             this.updateLoop = new System.Windows.Forms.Timer(this.components);
             this.btnAuth = new System.Windows.Forms.Button();
             this.btnReg = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // MessengerWindow
@@ -145,11 +146,24 @@
             this.btnReg.UseVisualStyleBackColor = true;
             this.btnReg.Click += new System.EventHandler(this.btnReg_Click);
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(487, 366);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(141, 28);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Registartion";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Btn_DelClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(811, 501);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnReg);
             this.Controls.Add(this.btnAuth);
             this.Controls.Add(this.btnSend);
@@ -180,6 +194,7 @@
         private System.Windows.Forms.Timer updateLoop;
     private System.Windows.Forms.Button btnAuth;
     private System.Windows.Forms.Button btnReg;
-  }
+        private System.Windows.Forms.Button button1;
+    }
 }
 

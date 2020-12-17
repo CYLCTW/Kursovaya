@@ -18,6 +18,7 @@ namespace DotChatWF
 {
   public partial class AuthentificationForm : Form
   {
+        int timetoken = 0;
         public class AuthData
         {
             public string login { get; set; }
@@ -70,7 +71,7 @@ namespace DotChatWF
                         MForm.TextBox_username.Text = name;
                         MForm.Show();
                         this.Visible = false;
-                        MForm.int_token = -1;
+                        MForm.int_token = int_token;
                         MForm.CheckStatusOnline();
                         //
 
@@ -124,6 +125,11 @@ namespace DotChatWF
         }
 
         private void AuthentificationForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
         }

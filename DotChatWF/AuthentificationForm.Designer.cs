@@ -51,7 +51,7 @@
             this.textBox1.Location = new System.Drawing.Point(35, 39);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(224, 22);
+            this.textBox1.Size = new System.Drawing.Size(183, 22);
             this.textBox1.TabIndex = 1;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -61,7 +61,7 @@
             this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(276, 22);
+            this.textBox2.Size = new System.Drawing.Size(206, 22);
             this.textBox2.TabIndex = 2;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
@@ -111,5 +111,5 @@
     private System.Windows.Forms.TextBox textBox2;
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.Label label2;
-  }
+    }
 }

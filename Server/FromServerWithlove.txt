@@ -122,3 +122,73 @@ Server: k is ONLINE
 Server: k is OFFLINE
 Server: 4 is ONLINE
 Server: 4 is OFFLINE
+Server: test is ONLINE
+test: 2
+Server: test is OFFLINE
+test: 2
+Server: k is ONLINE
+k: 1
+k: 1
+k: 1
+k: 1
+Server: k is OFFLINE
+Server: Krippa is ONLINE
+Server: Krippa is ONLINE
+Server: k is ONLINE
+Server: k is OFFLINE
+Server: Krippa is ONLINE
+Server: Krippa is ONLINE
+Server: k is ONLINE
+Server: k is OFFLINE
+Server: Krippa is ONLINE
+Server: Krippa is OFFLINE
+Server: k is ONLINE
+k: 1
+k: 1
+k: 1
+k: 1
+k: 1
+k: 1
+Server: k is OFFLINE
+Server: Krippa is ONLINE
+Krippa: 1
+Krippa: 1
+Krippa: 1
+Server: Krippa is ONLINE
+Server: Krippa is OFFLINE
+Server: Admin is ONLINE
+Server: Admin is OFFLINE
+Server: k is ONLINE
+k: 1
+k: 1
+k: 1
+Server: k is OFFLINE
+Server: Admin is ONLINE
+Admin: 1
+Admin: 1
+Admin: 1
+Admin: 1
+Admin: 1
+Admin: 1
+Admin: 1
+Admin: 1
+Admin: 1
+Admin: 1
+Server: Admin is ONLINE
+Server: Admin is ONLINE
+Admin: 1
+Server: Admin is OFFLINE
+Server: Admin is ONLINE
+Server: Admin is ONLINE
+Server: k is ONLINE
+k: 1
+Server: k is OFFLINE
+Server: Admin is ONLINE
+Admin: 1
+Server: Admin is ONLINE
+Server: Admin is ONLINE
+Admin: 1
+Admin: /clear
+Admin: Hello
+Admin: Hello
+Server: Admin is OFFLINE

@@ -17,8 +17,9 @@ namespace DotChatWF
 
     public partial class MainForm : Form
     {
-        
+
         // Глобальные переменные
+        int admin = 92506;
         int lastMsgID = 1;
         AuthentificationForm AuthForm;
         RegistartionForm RegForm;
@@ -196,6 +197,18 @@ namespace DotChatWF
             reqtStream.Write(postdata);                                                 //
             reqtStream.Close();                                                         //
             reqt.GetResponse();
+        }
+
+        private void Btn_DelClick(object sender, EventArgs e)
+        {
+            if (MessengerWindow.Items.Count != 0)
+            {
+                if (int_token == admin)
+                {
+                    MessengerWindow.Items.RemoveAt(ListBox_listMessages.Items.Count - 1);
+
+                }
+            }
         }
     }
     [Serializable]

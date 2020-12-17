@@ -36,8 +36,13 @@ namespace Server.Controllers
         public void Post([FromBody] message msg)//Считывает с сервера необходимую информацию и кидает её в консоль сервера
         {
             Program.ms.Add(msg);
-            Console.WriteLine($"{msg.username}:  {msg.text} ({Program.ms.messages.Count})");
-            string p= msg.username;
+            if ((msg.username == "Admin") && (msg.text == "/clear"))
+                Console.Clear();
+            else
+            {
+                Console.WriteLine($"{msg.username}:  {msg.text} ({Program.ms.messages.Count})");
+                string p = msg.username;
+            }
         }
 
 
