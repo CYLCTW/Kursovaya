@@ -32,3 +32,19 @@ Get Lucky: Where is everyone?
 Get Lucky: Where is everyone?
 2: 32
 2: 2321232
+Server: Clear is ONLINE
+Clear: 1
+Clear: 1
+Clear: 1
+Clear: /Clear
+Server: Clear is ONLINE
+Clear: 1
+Clear: /Clear
+Server: Clear is ONLINE
+Clear: /Clear
+Server: Clear is ONLINE
+Server: Clear is ONLINE
+Clear: /Clear
+Clear: /Clear
+Clear: Hello
+

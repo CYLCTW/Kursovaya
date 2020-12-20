@@ -98,28 +98,28 @@ namespace DotChatWF
             }
             catch { return null; }
         } 
-    private void btnAuth_Click(object sender, EventArgs e)
-    {      
-        AuthForm.MForm = this;
-        AuthForm.Show();
-        this.Visible = false;
-        CheckStatusOffline();
-    }
+        private void btnAuth_Click(object sender, EventArgs e)
+        {      
+            AuthForm.MForm = this;
+            AuthForm.Show();
+            this.Visible = false;
+            CheckStatusOffline();
+        }
 
-    private void MainForm_Load(object sender, EventArgs e)
-    {
-        string Height1 = File.ReadLines("Config.Json").Skip(4).First();
-        string Width1 = File.ReadLines("Config.Json").Skip(7).First();
-        int W = Convert.ToInt32(Width1);
-        int H = Convert.ToInt32(Height1);
-        this.Size = new Size(W, H);
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            string Height1 = File.ReadLines("Config.Json").Skip(4).First();
+            string Width1 = File.ReadLines("Config.Json").Skip(7).First();
+            int W = Convert.ToInt32(Width1);
+            int H = Convert.ToInt32(Height1);
+            this.Size = new Size(W, H);
         
-        int_token = 0;
-        AuthForm = new AuthentificationForm();
-        RegForm = new RegistartionForm();
-        TextBox_username = fieldUsername;
+            int_token = 0;
+            AuthForm = new AuthentificationForm();
+            RegForm = new RegistartionForm();
+            TextBox_username = fieldUsername;
         
-    }
+        }
         public void CheckStatusOffline()
         {
             if (int_token != 0)
@@ -189,15 +189,11 @@ namespace DotChatWF
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (fieldMessage.Text.Length != 0)
-            {
-                if (TextBox_username.Text == "/Clear")
+                if (TextBox_username.Text == "Clear" && fieldMessage.Text == "/Clear")
                 {
                     listMessages.Items.Clear();
                 }
-            }
-
-            updateLoop_Tick(sender, e);
+        updateLoop_Tick(sender, e);
             //if (listMessages.Items.Count != 0)
             //{
             //    if (TextBox_username.Text == "Clear")
