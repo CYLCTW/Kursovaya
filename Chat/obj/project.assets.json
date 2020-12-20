@@ -144,19 +144,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\olego\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\olego\\source\\repos\\OlegStrix\\Messenger\\Chat\\Chat.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Documents\\GitHub\\Kursovaya\\Chat\\Chat.csproj",
       "projectName": "Chat",
-      "projectPath": "C:\\Users\\olego\\source\\repos\\OlegStrix\\Messenger\\Chat\\Chat.csproj",
-      "packagesPath": "C:\\Users\\olego\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\olego\\source\\repos\\OlegStrix\\Messenger\\Chat\\obj\\",
+      "projectPath": "C:\\Users\\User\\Documents\\GitHub\\Kursovaya\\Chat\\Chat.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\Documents\\GitHub\\Kursovaya\\Chat\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\olego\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
