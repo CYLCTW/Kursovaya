@@ -32,7 +32,7 @@ namespace Server
   public class MessagesClass
   {
     public List<message> messages = new List<message>();
-
+    //Выводит сообщение на сервер(1)
     public void Add(message ms)
     {
       File.AppendAllText("History.txt", ms.username + ": ");
@@ -40,18 +40,18 @@ namespace Server
       ms.timestamp = DateTime.UtcNow;
       messages.Add(ms);
     }
-
+    //Выводит сообщение на сервер(2)
     public void Add(string username, string text)
     {
       message msg = new message(username, text);
       messages.Add(msg);
     }
-    
+    //Получает сообщение от клиента
     public message Get(int id)
     {
       return messages.ElementAt(id);
     }
-
+    //Подсчёт сообщений
     public int GetCountMessages()
     {
       return messages.Count;
@@ -65,7 +65,6 @@ namespace Server
     }
 
   }
-
   public class tokens
   {
     public int token { get; set; }
@@ -78,7 +77,6 @@ namespace Server
       this.login = "none";
       this.password = "none";
     }
-
     public tokens(int token, string login, string password)
     {
       this.token = token;
@@ -87,11 +85,10 @@ namespace Server
     }
 
   }
-
   public class SessionsClass
   {
     public List<tokens> list_tokens = new List<tokens>();
-
+    //Генерация токена
     public int GenToken()
     {
       Random rand = new Random();
@@ -127,7 +124,6 @@ namespace Server
       }
       return -200;   // ошибка логики
     }
-
     public int registration(AuthData auth_data)
     {
       bool login_exist = false;
@@ -148,7 +144,6 @@ namespace Server
       }
       return -1;
     }
-
     public void SaveToFile(string filename = "data_sessions.json")
     {
       if (File.Exists(filename))
@@ -171,7 +166,7 @@ namespace Server
       }
 
     }
-
+    //Считывает данные о пользователях
     public void LoadFromFile(string filename = "data_sessions.json")
     {
       long size = 0;
@@ -205,7 +200,6 @@ namespace Server
 
     }
   }
-
   public class AuthData
   {
     public string login { get; set; }
