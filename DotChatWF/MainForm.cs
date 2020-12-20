@@ -31,7 +31,7 @@ namespace DotChatWF
         {
             InitializeComponent();
         }
-        
+        //Обновления клиента
         private void updateLoop_Tick(object sender, EventArgs e)
         {   
             Message msg = GetMessage(lastMsgID);
@@ -39,8 +39,7 @@ namespace DotChatWF
                 listMessages.Items.Add($"[{DateTime.Now.ToShortTimeString()}] [{msg.username}]: {msg.text}");
                 lastMsgID++;
             }
-        }
-        
+        } 
         //Отправка сообщения кликом на кнопку Send
         private void btnSend_Click(object sender, EventArgs e) {
 
@@ -63,8 +62,7 @@ namespace DotChatWF
                 updateLoop_Tick(sender, e);
             }
         }
-        
-
+        //Отправка сообщений на сервер
         void SendMessage(Message msg)
         {
             DateTime dt1 = DateTime.Now;
@@ -105,7 +103,7 @@ namespace DotChatWF
             this.Visible = false;
             CheckStatusOffline();
         }
-
+        //Главная форма
         private void MainForm_Load(object sender, EventArgs e)
         {
             string Height1 = File.ReadLines("Config.Json").Skip(4).First();
@@ -120,6 +118,7 @@ namespace DotChatWF
             TextBox_username = fieldUsername;
         
         }
+        //Метод для оффлайн
         public void CheckStatusOffline()
         {
             if (int_token != 0)
@@ -131,6 +130,7 @@ namespace DotChatWF
                 SendMessage(Here);
             }
         }
+        //Метод для онлайн
         public void CheckStatusOnline()
         {
             Message authok = new Message();
@@ -146,8 +146,7 @@ namespace DotChatWF
             reqtStream.Close();                                                        
             reqt.GetResponse();
         }
-
-
+        //При нажатии на кнопку регистрации
         private void btnReg_Click(object sender, EventArgs e)
         {
             RegForm.mForm = this;
@@ -155,52 +154,44 @@ namespace DotChatWF
             this.Visible = false;
             CheckStatusOffline();
         }
-
+        //Поле username
         private void fieldUsername_TextChanged(object sender, EventArgs e)
         {
             
-
         }
-
+        //
         private void listMessages_SelectedIndexChanged(object sender, EventArgs e)
         {
             
         }
-
+        //
         private void fieldMessage_TextChanged(object sender, EventArgs e)
         {
             
         }
-
+        //
         private void label1_Click(object sender, EventArgs e)
         {
 
         }
-
+        //
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             
         }
-
+        //
         private void MainFormClosed(object sender, FormClosedEventArgs e)
         {
             
         }
-
+        //
         private void button1_Click(object sender, EventArgs e)
         {
-                if (TextBox_username.Text == "Clear" && fieldMessage.Text == "/Clear")
+                if (TextBox_username.Text == "Clear")
                 {
                     listMessages.Items.Clear();
                 }
-        updateLoop_Tick(sender, e);
-            //if (listMessages.Items.Count != 0)
-            //{
-            //    if (TextBox_username.Text == "Clear")
-            //    {
-            //        listMessages.Items.Clear();
-            //    }
-            //}   
+        updateLoop_Tick(sender, e); 
         }
     }
     [Serializable]
