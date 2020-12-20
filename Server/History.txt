@@ -30,3 +30,5 @@ Server: Get Lucky is ONLINE
 Get Lucky: Hi
 Get Lucky: Where is everyone?
 Get Lucky: Where is everyone?
+2: 32
+2: 2321232
