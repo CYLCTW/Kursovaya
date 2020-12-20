@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Server
 {
-  [Serializable]//Everything turns into bits!!!(if you need)
+  [Serializable]
   public class message
   {
     public string username { get; set; }
@@ -35,10 +35,10 @@ namespace Server
 
     public void Add(message ms)
     {
-            File.AppendAllText("FromServerWithlove.txt", ms.username.ToString() + ": ");//With the use of this function you can send it's second attribute 
-            File.AppendAllText("FromServerWithlove.txt", ms.text.ToString() + "\n");//               to file with the name in the first attribute
-            ms.timestamp = DateTime.UtcNow;
-            messages.Add(ms);
+      File.AppendAllText("History.txt", ms.username + ": ");
+      File.AppendAllText("History.txt", ms.text + "\n");
+      ms.timestamp = DateTime.UtcNow;
+      messages.Add(ms);
     }
 
     public void Add(string username, string text)
@@ -46,19 +46,17 @@ namespace Server
       message msg = new message(username, text);
       messages.Add(msg);
     }
-
+    
     public message Get(int id)
     {
       return messages.ElementAt(id);
     }
 
-
     public int GetCountMessages()
     {
       return messages.Count;
     }
-
-
+    
     public MessagesClass()
     {
       messages.Clear();
@@ -94,23 +92,11 @@ namespace Server
   {
     public List<tokens> list_tokens = new List<tokens>();
 
-    public void addValera()
-    {
-      Random rand = new Random();
-      int int_token = rand.Next(1000 * 1000, 10 * 1000 * 1000);
-      tokens token_record = new tokens(int_token, "Valera", "UWP");
-      token_record.login = "Valera";
-      token_record.password = "UWP";
-      token_record.token = int_token;
-      list_tokens.Add(token_record);
-    }
-
     public int GenToken()
     {
       Random rand = new Random();
       return rand.Next(10 * 1000 , 100 * 1000 );
     }
-
     public int login(AuthData auth_data)
     {
       string login = auth_data.login;
@@ -125,7 +111,6 @@ namespace Server
           if (item.password == password)
           {
             int token = item.token;
-            //list_tokens.Add(record_token);
             Console.WriteLine($"Аутификация успешно login: {login} password: {password} token: {token}");
             return token;
           }
@@ -163,7 +148,6 @@ namespace Server
       }
       return -1;
     }
-
 
     public void SaveToFile(string filename = "data_sessions.json")
     {
@@ -224,9 +208,7 @@ namespace Server
 
   public class AuthData
   {
-    public string login { get; set; }//логин
+    public string login { get; set; }
     public string password { get; set; }
   }
-
-
 }

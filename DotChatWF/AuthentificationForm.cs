@@ -18,11 +18,11 @@ namespace DotChatWF
 {
   public partial class AuthentificationForm : Form
   {
-        int timetoken = 0;
         public class AuthData
         {
             public string login { get; set; }
             public string password { get; set; }
+            public int token { get; set; }
         }
 
         public MainForm MForm;
@@ -36,10 +36,10 @@ namespace DotChatWF
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            string name = textBox1.Text;
-            string password = textBox2.Text;
+                string name = textBox1.Text;
+                string password = textBox2.Text;
                 string text;
-                string file = @"C:\Users\User\Documents\GitHub\Kursovaya\Server\data_sessions.json";
+                string file = @"C:\Users\olego\source\repos\OlegStrix\Messenger\Server\data_sessions.json"; 
                 int k = 0;
                 using(StreamReader sr = new StreamReader(file))
                 {
@@ -52,11 +52,14 @@ namespace DotChatWF
                     {
                         if(password == m.ListTokens[i].Password)
                         {
+                        var token = m.ListTokens[i].Token;
                         WebRequest req = WebRequest.Create("http://localhost:5000/api/auth");
                         req.Method = "POST";
                         AuthData auth_data = new AuthData();
                         auth_data.login = name;
                         auth_data.password = password;
+                        int token1 = Convert.ToInt32(token);
+                        auth_data.token = token1;
                         string postData = JsonConvert.SerializeObject(auth_data);
                         req.ContentType = "application/json";
                         StreamWriter reqStream = new StreamWriter(req.GetRequestStream());
@@ -68,14 +71,13 @@ namespace DotChatWF
                         sr.Close();
                         int int_token = Convert.ToInt32(content, 10);
                         k = 1;
-                        MForm.TextBox_username.Text = name;
-                        MForm.Show();
-                        this.Visible = false;
-                        MForm.int_token = int_token;
-                        MForm.CheckStatusOnline();
-                        //
-
-                    }
+                            MForm.TextBox_username.Text = name;
+                            MForm.Show();
+                            this.Visible = false;
+                            MForm.int_token = -1;
+                            MForm.CheckStatusOnline();
+                        }
+                        
                         else 
                         {
                             k = 1;
@@ -87,10 +89,9 @@ namespace DotChatWF
                 {
                     MessageBox.Show("User not found");
                 }
+
         }
 
-
-        
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -101,8 +102,6 @@ namespace DotChatWF
         {
 
         }
-
-
 
         public partial class Temperatures
         {
@@ -119,19 +118,9 @@ namespace DotChatWF
             public string Password { get; set; }
         }
 
-        private void AuthentificationForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void AuthentificationForm_Closed(object sender, FormClosedEventArgs e)
         {
             MForm.Show();
-        }
-
-        private void AuthentificationForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 
@@ -140,10 +129,6 @@ namespace DotChatWF
         public static T ToObject<T>(this string jsonText)
         {
             return JsonConvert.DeserializeObject<T>(jsonText);
-        }
-        public static string ToJson<T>(this T obj)
-        {
-            return JsonConvert.SerializeObject(obj);
         }
     }
 }

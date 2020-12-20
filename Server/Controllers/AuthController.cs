@@ -20,6 +20,5 @@ namespace Server.Controllers
       int int_token = Program.Sessions.login(auth_data);
       return int_token;
     }
-
   }
 }

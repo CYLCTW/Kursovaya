@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -30,21 +31,30 @@ namespace Server.Controllers
             return NotFound();
         }
 
-
         // POST api/<chatController>
         [HttpPost]
-        public void Post([FromBody] message msg)//Считывает с сервера необходимую информацию и кидает её в консоль сервера
+        public void Post([FromBody] message msg)
         {
+            var s = msg.text;
+            string clear_text = Convert.ToString(s);
             Program.ms.Add(msg);
-            if ((msg.username == "Admin") && (msg.text == "/clear"))
-                Console.Clear();
+            if(msg.username == "Clear")
+            {
+                if(clear_text == "/Clear")
+                {
+                    Console.Clear();
+                }
+                else
+                {
+                    Console.WriteLine($"{msg.username}:  {msg.text} ({Program.ms.messages.Count - 1})");
+                }
+                         
+            }
             else
             {
-                Console.WriteLine($"{msg.username}:  {msg.text} ({Program.ms.messages.Count})");
-                string p = msg.username;
+                Console.WriteLine($"{msg.username}:  {msg.text} ({Program.ms.messages.Count - 1})");
             }
+
         }
-
-
     }
 }
