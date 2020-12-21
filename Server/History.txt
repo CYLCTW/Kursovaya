@@ -55,3 +55,11 @@ k: /Clear
 Server: k is OFFLINE
 Server: Clear is ONLINE
 Clear: /Clear
+Server: Admin is ONLINE
+Admin: aw
+Admin: aw
+Admin: aw
+Admin: aw
+Admin: /Clear
+Admin:  
+Admin:  
