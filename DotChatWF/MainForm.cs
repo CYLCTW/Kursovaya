@@ -12,26 +12,20 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace DotChatWF
 {
-
     public partial class MainForm : Form
     {
-        
-        // Глобальные переменные
         int lastMsgID = 1;
         AuthentificationForm AuthForm;
         RegistartionForm RegForm;
         public TextBox TextBox_username;
         public ListBox ListBox_listMessages;
         public int int_token;
-
         public MainForm()
         {
             InitializeComponent();
         }
-        //Обновления клиента
         private void updateLoop_Tick(object sender, EventArgs e)
         {   
             Message msg = GetMessage(lastMsgID);
@@ -40,9 +34,7 @@ namespace DotChatWF
                 lastMsgID++;
             }
         } 
-        //Отправка сообщения кликом на кнопку Send
         private void btnSend_Click(object sender, EventArgs e) {
-
                 if (int_token == 0)
                 {
                 MessageBox.Show("Please log in or register");
@@ -58,11 +50,9 @@ namespace DotChatWF
                     });
                 }
                 ListBox_listMessages = listMessages;
-                
                 updateLoop_Tick(sender, e);
             }
         }
-        //Отправка сообщений на сервер
         void SendMessage(Message msg)
         {
             DateTime dt1 = DateTime.Now;
@@ -80,8 +70,6 @@ namespace DotChatWF
             reqStream.Close();
             req.GetResponse();
         }
-
-        // Получает сообщение с сервера
         Message GetMessage(int id)
         {
             try
@@ -90,7 +78,6 @@ namespace DotChatWF
                 req.Method = "GET";
                 WebResponse resp = req.GetResponse();
                 string smsg = new StreamReader(resp.GetResponseStream()).ReadToEnd();
-
                 if (smsg == "Not found") return null;
                 return JsonConvert.DeserializeObject<Message>(smsg);
             }
@@ -103,7 +90,6 @@ namespace DotChatWF
             this.Visible = false;
             CheckStatusOffline();
         }
-        //Главная форма
         private void MainForm_Load(object sender, EventArgs e)
         {
             string Height1 = File.ReadLines("Config.Json").Skip(4).First();
@@ -111,14 +97,11 @@ namespace DotChatWF
             int W = Convert.ToInt32(Width1);
             int H = Convert.ToInt32(Height1);
             this.Size = new Size(W, H);
-        
             int_token = 0;
             AuthForm = new AuthentificationForm();
             RegForm = new RegistartionForm();
             TextBox_username = fieldUsername;
-        
         }
-        //Метод для оффлайн
         public void CheckStatusOffline()
         {
             if (int_token != 0)
@@ -130,7 +113,6 @@ namespace DotChatWF
                 SendMessage(Here);
             }
         }
-        //Метод для онлайн
         public void CheckStatusOnline()
         {
             Message authok = new Message();
@@ -139,14 +121,12 @@ namespace DotChatWF
             WebRequest reqt = WebRequest.Create("http://localhost:5000/api/chat");
             reqt.Method = "POST";                                                       
             string postdata = JsonConvert.SerializeObject(authok);                                 
-            reqt.ContentType = "application/json";                                      
-                                                                                                                            
+            reqt.ContentType = "application/json";                                                                                                                                                    
             StreamWriter reqtStream = new StreamWriter(reqt.GetRequestStream());        
             reqtStream.Write(postdata);                                                 
             reqtStream.Close();                                                        
             reqt.GetResponse();
         }
-        //При нажатии на кнопку регистрации
         private void btnReg_Click(object sender, EventArgs e)
         {
             RegForm.mForm = this;
@@ -154,37 +134,24 @@ namespace DotChatWF
             this.Visible = false;
             CheckStatusOffline();
         }
-        //Поле username
         private void fieldUsername_TextChanged(object sender, EventArgs e)
         {
-            
         }
-        //
         private void listMessages_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
+        { 
         }
-        //
         private void fieldMessage_TextChanged(object sender, EventArgs e)
         {
-            
         }
-        //
         private void label1_Click(object sender, EventArgs e)
         {
-
         }
-        //
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
         }
-        //
         private void MainFormClosed(object sender, FormClosedEventArgs e)
         {
-            
         }
-        //
         private void button1_Click(object sender, EventArgs e)
         {
                 if (TextBox_username.Text == "Admin")

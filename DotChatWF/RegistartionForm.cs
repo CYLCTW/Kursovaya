@@ -10,7 +10,6 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace DotChatWF
 {
   public partial class RegistartionForm : Form
@@ -20,18 +19,14 @@ namespace DotChatWF
       public string login { get; set; }
       public string password { get; set; }
     }
-
     public MainForm mForm;
     public RegistartionForm()
     {
       InitializeComponent();
     }
-    //Загрузка окна регистрации
     private void RegistartionForm_Load(object sender, EventArgs e)
-    {
-            
+    {      
     }
-    //Кнопка регистрации
     private void btnReg2serv_Click(object sender, EventArgs e)
     {
         string pass1 = TBPass1.Text;
@@ -70,22 +65,16 @@ namespace DotChatWF
       {
         MessageBox.Show("Incorrect password entered");
       }
-
     }
-    //
     private void RegistartionForm_FormClosing(object sender, FormClosingEventArgs e)
     {
-
     }
-    //
     private void RegistartionForm_FormClosed(object sender, FormClosedEventArgs e)
     {
       mForm.Show();
     }
-    //
     private void fieldUserName_TextChanged(object sender, EventArgs e)
     {
-
     }
   }
 }

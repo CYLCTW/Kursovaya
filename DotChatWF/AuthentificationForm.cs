@@ -12,8 +12,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-
 namespace DotChatWF
 {
   public partial class AuthentificationForm : Form
@@ -24,18 +22,14 @@ namespace DotChatWF
                 public string password { get; set; }
                 public int token { get; set; }
         }
-
         public MainForm MForm;
         public AuthentificationForm()
         {
                 InitializeComponent();
         }
-        //Загрузка окошка авторизации
         private void AuthentificationForm_Load(object sender, EventArgs e)
         {
-
         }
-        //Кнопка авторизации
         private void button1_Click(object sender, EventArgs e)
         {
                 string name = textBox1.Text;
@@ -79,7 +73,6 @@ namespace DotChatWF
                             MForm.int_token = -1;
                             MForm.CheckStatusOnline();
                         }
-                        
                         else 
                         {
                             k = 1;
@@ -91,25 +84,18 @@ namespace DotChatWF
                 {
                     MessageBox.Show("User not found");
                 }
-
         }
-        //
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
         }
-        //
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-
         }
-        //
         public partial class Temperatures
         {
             [JsonProperty("list_tokens")]
             public ListToken[] ListTokens { get; set; }
         }
-        //
         public partial class ListToken
         {
             [JsonProperty("token")]
@@ -119,13 +105,11 @@ namespace DotChatWF
             [JsonProperty("password")]
             public string Password { get; set; }
         }
-        //
         private void AuthentificationForm_Closed(object sender, FormClosedEventArgs e)
         {
             MForm.Show();
         }
     }
-    //Десериализация из json файла с сервера с данными о пользователях
     public static class JsonExtensions
     {
         public static T ToObject<T>(this string jsonText)
