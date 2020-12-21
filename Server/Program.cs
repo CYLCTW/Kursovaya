@@ -15,21 +15,26 @@ namespace Server
     {
     public static MessagesClass ms;
     public static SessionsClass Sessions;
-
-    public static void Main(string[] args)
+        //
+        //
+        public static void Main(string[] args)
         {
             ms = new MessagesClass();  //обработка сообщений
             Sessions = new SessionsClass(); // хранение токенов логинов и паролей
             Sessions.LoadFromFile();
+            //
+            //
             CreateHostBuilder(args).Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+        public static IHostBuilder CreateHostBuilder(string[] args)
+        {
+            return Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+        }
 
 
     }
