@@ -23,7 +23,6 @@ namespace Server
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            //
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsApi",

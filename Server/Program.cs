@@ -21,7 +21,6 @@ namespace Server
             ms = new MessagesClass();
             Sessions = new SessionsClass();
             Sessions.LoadFromFile();
-            //
             string IP;
             string port;
 
@@ -41,7 +40,6 @@ namespace Server
                     Url = $"http://{IP}:{port}";
                 }
             }
-            //
             CreateHostBuilder(args).Build().Run();
         }
         public static IHostBuilder CreateHostBuilder(string[] args)
