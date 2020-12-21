@@ -33,7 +33,7 @@ namespace DotChatWF
         string pass2 = TBPass2.Text;
         if (pass1 == pass2)
         {
-        WebRequest req = WebRequest.Create("http://localhost:5000/api/reg");
+        WebRequest req = WebRequest.Create($"http://{mForm.IP}:{mForm.Port}/api/reg");
         req.Method = "POST";
         AuthData auth_data = new AuthData();
         auth_data.login = fieldUserName.Text;

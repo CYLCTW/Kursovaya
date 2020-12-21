@@ -20,8 +20,14 @@ namespace DotChatWF
         AuthentificationForm AuthForm;
         RegistartionForm RegForm;
         public TextBox TextBox_username;
+        public TextBox TextBox_port;
         public ListBox ListBox_listMessages;
         public int int_token;
+        //
+        public string IP { get; set; } = "Press";
+        public string Port { get; set; } = "Press";
+
+        //
         public MainForm()
         {
             InitializeComponent();
@@ -59,12 +65,10 @@ namespace DotChatWF
             DateTime dt2 = new DateTime(DateTime.Now.Year + 1, 1, 1, 0, 0, 0, 1);
             TimeSpan ts = dt2 - dt1;
             listBox1.Items.Add($"Осталось {ts.Days} д, {ts.Hours} ч, {ts.Minutes} м, {ts.Seconds} с до НГ");
-            WebRequest req = WebRequest.Create("http://localhost:5000/api/chat");
+            WebRequest req = WebRequest.Create($"http://{IP}:{Port}/api/chat");
             req.Method = "POST";
             string postData = JsonConvert.SerializeObject(msg);
-            //byte[] bytes = Encoding.UTF8.GetBytes(postData);
             req.ContentType = "application/json";
-            //req.ContentLength = bytes.Length;
             StreamWriter reqStream = new StreamWriter(req.GetRequestStream());
             reqStream.Write(postData);
             reqStream.Close();
@@ -74,7 +78,7 @@ namespace DotChatWF
         {
             try
             {
-                WebRequest req = WebRequest.Create($"http://localhost:5000/api/chat/{id}");
+                WebRequest req = WebRequest.Create($"http://{IP}:{Port}/api/chat/{id}");
                 req.Method = "GET";
                 WebResponse resp = req.GetResponse();
                 string smsg = new StreamReader(resp.GetResponseStream()).ReadToEnd();
@@ -84,7 +88,9 @@ namespace DotChatWF
             catch { return null; }
         } 
         private void btnAuth_Click(object sender, EventArgs e)
-        {      
+        {
+            Port = TextPort.Text;
+            IP = TextIp.Text;
             AuthForm.MForm = this;
             AuthForm.Show();
             this.Visible = false;
@@ -118,7 +124,7 @@ namespace DotChatWF
             Message authok = new Message();
             authok.username = "Server";
             authok.text = fieldUsername.Text + " is ONLINE";
-            WebRequest reqt = WebRequest.Create("http://localhost:5000/api/chat");
+            WebRequest reqt = WebRequest.Create($"http://{IP}:{Port}/api/chat");
             reqt.Method = "POST";                                                       
             string postdata = JsonConvert.SerializeObject(authok);                                 
             reqt.ContentType = "application/json";                                                                                                                                                    
@@ -129,6 +135,8 @@ namespace DotChatWF
         }
         private void btnReg_Click(object sender, EventArgs e)
         {
+            Port = TextPort.Text;
+            IP = TextIp.Text;
             RegForm.mForm = this;
             RegForm.Show();
             this.Visible = false;
@@ -159,6 +167,16 @@ namespace DotChatWF
                     listMessages.Items.Clear();
                 }
         updateLoop_Tick(sender, e); 
+        }
+
+        private void TextPort_TextChanged(object sender, EventArgs e)
+        {
+            Port = TextPort.Text;
+        }
+
+        private void TextIp_TextChanged(object sender, EventArgs e)
+        {
+            IP = TextIp.Text;
         }
     }
     [Serializable]

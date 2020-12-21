@@ -49,7 +49,7 @@ namespace DotChatWF
                         if(password == m.ListTokens[i].Password)
                         {
                         var token = m.ListTokens[i].Token;
-                        WebRequest req = WebRequest.Create("http://localhost:5000/api/auth");
+                        WebRequest req = WebRequest.Create($"http://{MForm.IP}:{MForm.Port}/api/auth");
                         req.Method = "POST";
                         AuthData auth_data = new AuthData();
                         auth_data.login = name;
