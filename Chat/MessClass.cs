@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 namespace Server
 {
     [Serializable]
@@ -18,7 +17,6 @@ namespace Server
             this.text = "Server is running...";
             this.timestamp = DateTime.UtcNow;
         }
-
         public message(string username, string text)
         {
             this.username = username;
@@ -30,40 +28,33 @@ namespace Server
     public class MessagesClass
     {
         public List<message> messages = new List<message>();
-
         public void Add(message ms)
         {
             ms.timestamp = DateTime.UtcNow;
             messages.Add(ms);
             Console.WriteLine(messages.Count);
         }
-
         public void Add(string username, string text)
         {
             message msg = new message(username, text);
             messages.Add(msg);
             Console.WriteLine(messages.Count);
         }
-
         public MessagesClass()
         {
             messages.Clear();
             message ms = new message();
             messages.Add(ms);
         }
-
         public MessagesClass(List<message> messages)
         {
             messages.Clear();
             message ms = new message();
             messages.Add(ms);
         }
-
         public override string ToString()
         {
             return messages.ToString();
         }
     }
-
-
 }

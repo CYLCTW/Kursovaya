@@ -8,7 +8,6 @@ using System.IO;
 using System.Net.Cache;
 using System.Timers;
 using System.Linq;
-
 namespace DotChat
 {
     [Serializable]
@@ -18,7 +17,6 @@ namespace DotChat
         public string text = "";
         public DateTime timestamp;
     }
-
     class Program
     {
         private static MenuBar menu;
@@ -29,14 +27,10 @@ namespace DotChat
         private static TextField fieldUsername;
         private static TextField fieldMessage;
         private static Button btnSend;
-
         private static List<Message> messages = new List<Message>();
-
         static void Main(string[] args)
         {
             Application.Init();
-
-            // Создание верхнего меню приложения
             menu = new MenuBar(new MenuBarItem[] {
                 new MenuBarItem("_App", new MenuItem[] {
                     new MenuItem("_Quit", "Close the app", Application.RequestStop),
@@ -49,8 +43,6 @@ namespace DotChat
                 Height = 1,
             };
             Application.Top.Add(menu);
-
-            // Создание главного окна
             winMain = new Window()
             {
                 X = 0,
@@ -59,10 +51,7 @@ namespace DotChat
                 Height = Dim.Fill(),
                 Title = "DotChat",
             };
-            //winMain.ColorScheme = colorDark;
             Application.Top.Add(winMain);
-
-            // Создание окна с сообщениями
             winMessages = new Window()
             {
                 X = 0,
@@ -71,8 +60,6 @@ namespace DotChat
                 Height = winMain.Height - 2,
             };
             winMain.Add(winMessages);
-
-            // Создание надписи с username
             labelUsername = new Label()
             {
                 X = 0,
@@ -83,8 +70,6 @@ namespace DotChat
                 TextAlignment = TextAlignment.Right,
             };
             winMain.Add(labelUsername);
-
-            // Создание надписи с message
             labelMessage = new Label()
             {
                 X = 0,
@@ -95,8 +80,6 @@ namespace DotChat
                 TextAlignment = TextAlignment.Right,
             };
             winMain.Add(labelMessage);
-
-            // Создание поля ввода username
             fieldUsername = new TextField()
             {
                 X = 15,
@@ -105,8 +88,6 @@ namespace DotChat
                 Height = 1,
             };
             winMain.Add(fieldUsername);
-
-            // Создание поля ввода message
             fieldMessage = new TextField()
             {
                 X = 15,
@@ -115,8 +96,6 @@ namespace DotChat
                 Height = 1,
             };
             winMain.Add(fieldMessage);
-
-            // Создание кнопки отправки
             btnSend = new Button()
             {
                 X = Pos.Right(winMain) - 15,
@@ -127,8 +106,6 @@ namespace DotChat
             };
             btnSend.Clicked += OnBtnSendClick;
             winMain.Add(btnSend);
-
-            // Создание цикла получения сообщений
             int lastMsgID = 1;
             string Timing = File.ReadLines("UpdateLoop.Json").Skip(4).First();
             Timer updateLoop = new Timer();
@@ -144,18 +121,14 @@ namespace DotChat
                 }
             };
             updateLoop.Start();
-
             Application.Run();
         }
-
-        // Реакция на клик кнопки
         static void OnBtnSendClick()
         {
             if (fieldUsername.Text.Length != 0 && fieldMessage.Text.Length != 0)
             {
                 Message msg = new Message()
                 {
-
                     username = fieldUsername.Text.ToString(),
                     text = fieldMessage.Text.ToString(),
                 };
@@ -163,8 +136,6 @@ namespace DotChat
                 fieldMessage.Text = "";
             }
         }
-
-        // Синхронизирует список сообщений с представлением
         static void MessagesUpdate()
         {
             winMessages.RemoveAll();
@@ -184,8 +155,6 @@ namespace DotChat
             }
             Application.Refresh();
         }
-
-        // Отправляет сообщение на сервер
         static void SendMessage(Message msg)
         {
             WebRequest req = WebRequest.Create("http://localhost:5000/api/chat");
@@ -197,21 +166,16 @@ namespace DotChat
             Stream reqStream = req.GetRequestStream();
             reqStream.Write(bytes);
             reqStream.Close();
-
             req.GetResponse();
         }
-        
-        // Получает сообщение с сервера
         static Message GetMessage(int id)
         {        
             WebRequest req = WebRequest.Create($"http://localhost:5000/api/chat/{id}");
             req.Method = "GET";
             WebResponse resp = req.GetResponse();
             string smsg = new StreamReader(resp.GetResponseStream()).ReadToEnd();
-
             if (smsg == "Not found") return null;
             return JsonConvert.DeserializeObject<Message>(smsg);
         }
-        
     }
 }
