@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-
 namespace Server
 {
   [Serializable]
@@ -19,7 +18,6 @@ namespace Server
       this.text = "Server is running...";
       this.timestamp = DateTime.UtcNow;
     }
-
     public message(string username, string text)
     {
       this.username = username;
@@ -27,12 +25,10 @@ namespace Server
       this.timestamp = DateTime.UtcNow;
     }
   }
-
   [Serializable]
   public class MessagesClass
   {
     public List<message> messages = new List<message>();
-    //Выводит сообщение на сервер(1)
     public void Add(message ms)
     {
       File.AppendAllText("History.txt", ms.username + ": ");
@@ -40,37 +36,31 @@ namespace Server
       ms.timestamp = DateTime.UtcNow;
       messages.Add(ms);
     }
-    //Выводит сообщение на сервер(2)
     public void Add(string username, string text)
     {
       message msg = new message(username, text);
       messages.Add(msg);
     }
-    //Получает сообщение от клиента
     public message Get(int id)
     {
       return messages.ElementAt(id);
     }
-    //Подсчёт сообщений
     public int GetCountMessages()
     {
       return messages.Count;
     }
-    
     public MessagesClass()
     {
       messages.Clear();
       message ms = new message();
       messages.Add(ms);
     }
-
   }
   public class tokens
   {
     public int token { get; set; }
     public string login { get; set; }
     public string password { get; set; }
-
     public tokens()
     {
       this.token = -1;
@@ -83,12 +73,10 @@ namespace Server
       this.login = login;
       this.password = password;
     }
-
   }
   public class SessionsClass
   {
     public List<tokens> list_tokens = new List<tokens>();
-    //Генерация токена
     public int GenToken()
     {
       Random rand = new Random();
@@ -122,7 +110,7 @@ namespace Server
       {
         return -2;
       }
-      return -200;   // ошибка логики
+      return -200;
     }
     public int registration(AuthData auth_data)
     {
@@ -150,7 +138,6 @@ namespace Server
       {
         File.Delete(filename);
       }
-
       try
       {
         string Data = JsonConvert.SerializeObject(Program.Sessions);
@@ -164,9 +151,7 @@ namespace Server
       {
         Console.WriteLine(e.Message);
       }
-
     }
-    //Считывает данные о пользователях
     public void LoadFromFile(string filename = "data_sessions.json")
     {
       long size = 0;
@@ -179,7 +164,6 @@ namespace Server
       {
         try
         {
-          //Console.WriteLine("Dannie vigruzheni");
           string json = "";
           using (StreamReader sr = new StreamReader(filename, System.Text.Encoding.Default))
           {
@@ -195,9 +179,7 @@ namespace Server
         {
           Console.WriteLine(e.Message);
         }
-        // Console.WriteLine($"Загружено записей: {this.list_tokens.Count}");
       }
-
     }
   }
   public class AuthData

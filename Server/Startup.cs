@@ -11,8 +11,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-
-
 namespace Server
 {
     public class Startup
@@ -21,17 +19,19 @@ namespace Server
         {
             Configuration = configuration;
         }
-
-
     public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            //
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsApi",
+                builder => builder.WithOrigins("http://localhost:8080", "http://Mememe.su:8080")
+                .AllowAnyHeader()
+                .AllowAnyMethod());
+            });
         }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, Microsoft.AspNetCore.Hosting.IApplicationLifetime applicationLifetime,
                       ILoggerFactory loggerFactory)
         {
@@ -39,7 +39,6 @@ namespace Server
             {
                 app.UseDeveloperExceptionPage();
             }
-
             app.UseRouting();
             app.UseAuthorization();
             applicationLifetime.ApplicationStarted.Register(OnApplicationStarted);
@@ -48,22 +47,17 @@ namespace Server
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-            });//
+            });
         }
       protected void OnApplicationStarted()
       {
-
       }
-
       protected void OnApplicationStopping()
       {
         Program.Sessions.SaveToFile();
       }
-
       protected void OnApplicationStopped()
       {
-       
       }
-
   }
 }

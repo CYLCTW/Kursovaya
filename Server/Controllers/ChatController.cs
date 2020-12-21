@@ -6,20 +6,17 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
 namespace Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class ChatController : ControllerBase
     {
-        // GET api/<ChatController>/5
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<string> Get(int id)
         {
-
             string json = "Not found";
             if ((id < Program.ms.GetCountMessages()) && (id >= 0))
             {
@@ -28,8 +25,6 @@ namespace Server.Controllers
             }
             return NotFound();
         }
-
-        // POST api/<chatController>
         [HttpPost]
         public void Post([FromBody] message msg)
         {
@@ -45,14 +40,12 @@ namespace Server.Controllers
                 else
                 {
                     Console.WriteLine($"{msg.username}:  {msg.text} ({Program.ms.messages.Count - 1})");
-                }
-                         
+                }         
             }
             else
             {
                 Console.WriteLine($"{msg.username}:  {msg.text} ({Program.ms.messages.Count - 1})");
             }
-
         }
     }
 }

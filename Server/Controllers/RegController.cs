@@ -9,7 +9,6 @@ namespace Server.Controllers
   [ApiController]
   public class RegController : ControllerBase
   {
-    // POST api/<RegController>
     [HttpPost]
     public int Post([FromBody] AuthData auth_data)
     {

@@ -48,3 +48,10 @@ Clear: /Clear
 Clear: /Clear
 Clear: Hello
 
+Server: k is ONLINE
+k: 132
+k: hello
+k: /Clear
+Server: k is OFFLINE
+Server: Clear is ONLINE
+Clear: /Clear
