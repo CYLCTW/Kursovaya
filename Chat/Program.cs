@@ -106,6 +106,7 @@ namespace DotChat
             };
             btnSend.Clicked += OnBtnSendClick;
             winMain.Add(btnSend);
+            //Создание цикла получения сообщений
             int lastMsgID = 1;
             string Timing = File.ReadLines("UpdateLoop.Json").Skip(4).First();
             Timer updateLoop = new Timer();
@@ -123,6 +124,7 @@ namespace DotChat
             updateLoop.Start();
             Application.Run();
         }
+        //Реакция на клик кнопки Send
         static void OnBtnSendClick()
         {
             if (fieldUsername.Text.Length != 0 && fieldMessage.Text.Length != 0)
@@ -136,6 +138,7 @@ namespace DotChat
                 fieldMessage.Text = "";
             }
         }
+        //Синхронизирует список сообщений с представлением
         static void MessagesUpdate()
         {
             winMessages.RemoveAll();
@@ -155,6 +158,7 @@ namespace DotChat
             }
             Application.Refresh();
         }
+        //Отправляет сообщение на сервер
         static void SendMessage(Message msg)
         {
             WebRequest req = WebRequest.Create("http://localhost:5000/api/chat");
@@ -168,6 +172,7 @@ namespace DotChat
             reqStream.Close();
             req.GetResponse();
         }
+        //Получает сообщение с сервера
         static Message GetMessage(int id)
         {        
             WebRequest req = WebRequest.Create($"http://localhost:5000/api/chat/{id}");

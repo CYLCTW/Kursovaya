@@ -46,6 +46,4 @@ namespace Server.Controllers
             {
                 Console.WriteLine($"{msg.username}:  {msg.text} ({Program.ms.messages.Count - 1})");
             }
-        }
-    }
-}
+        }}}

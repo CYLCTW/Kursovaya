@@ -19,17 +19,10 @@ namespace Server
         {
             Configuration = configuration;
         }
-    public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddCors(options =>
-            {
-                options.AddPolicy("CorsApi",
-                builder => builder.WithOrigins("http://localhost:8080", "http://Mememe.su:8080")
-                .AllowAnyHeader()
-                .AllowAnyMethod());
-            });
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, Microsoft.AspNetCore.Hosting.IApplicationLifetime applicationLifetime,
                       ILoggerFactory loggerFactory)

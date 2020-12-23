@@ -159,6 +159,7 @@ namespace DotChatWF
         }
         private void MainFormClosed(object sender, FormClosedEventArgs e)
         {
+            CheckStatusOffline();
         }
         private void button1_Click(object sender, EventArgs e)
         {
